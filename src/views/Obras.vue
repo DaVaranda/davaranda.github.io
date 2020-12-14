@@ -29,7 +29,7 @@
                       <v-toolbar
                         flat
                         dark
-                        color="primary"
+                        :color="file.cor_destaque"
                       >
                         
                         <v-toolbar-title class="headline">{{selected_image.title}} - {{selected_image.description}} </v-toolbar-title>
@@ -120,12 +120,12 @@ export default {
               photo: element.url_o, 
               description: element.description._content, 
               tags: element.tags, 
-              is_square:element.tags.includes("1x1"), 
-              is_retangle:element.tags.includes("2x1")
+              is_square:element.tags.includes("quadrado"), 
+              is_retangle:element.tags.includes("retangulo")
             });
           }
         });
-      this.selected_image  = this.gallery[0];
+      if (this.gallery.length > 0) {this.selected_image  = this.gallery[0];}
       return this.gallery;
     },
     search() {
@@ -133,7 +133,7 @@ export default {
       this.fetchImages()
         .then((response) => {
           this.images = response.data.photos.photo;
-          this.filtro('arte');
+          this.filtro('banda');
           this.loading = false;
         })
     },

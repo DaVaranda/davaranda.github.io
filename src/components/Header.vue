@@ -29,13 +29,14 @@
           v-for="item in items"
           :key="item.nome"  
           :to="item.link"
-          active-class="text--primary"
+          :color="file.cor_destaque"
           class="font-weight-bold subtitle"
           min-width="96"
           text
         >
           {{ item.nome }}
         </v-tab>
+        <v-tabs-slider :color="file.cor_destaque"></v-tabs-slider>
       </v-tabs>
     </div>
     <div v-else>
@@ -79,11 +80,11 @@ export default {
     drawer: null,
       items: [
         {
-          nome: 'Portfólio',
+          nome: 'Home',
           link: '/'
         },
         {
-          nome: 'Sobre mim',
+          nome: 'Sobre nós',
           link: '/sobremim'
         },
         {
